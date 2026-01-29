@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - AI Skin Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-dna"></i> SSSR-AI
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/app"><i class="fa-solid fa-microscope"></i>&nbsp; Analyze</a></li>
+                <li><a href="/history" class="active"><i class="fa-solid fa-clock-rotate-left"></i>&nbsp; History</a></li>
+            </ul>
+            <div class="user-profile">
+                <div class="user-info">
+                    User: <strong>{{ name }}</strong>
+                </div>
+                <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="content-card">
+                <h2><i class="fa-solid fa-database"></i>&nbsp; Analysis Logs</h2>
+                <p style="color: var(--text-muted);">Archive of your previous AI scans. You can review results or delete old entries.</p>
+            </div>
+            
+            <div id="history-grid">
+                <p><i class="fa-solid fa-circle-notch fa-spin"></i> Retrieving encrypted data...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='history.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# .gitignore
+
+# 1. Ignore the virtual environment
+# This folder is huge and specific to your computer
+.venv/
+
+# 2. Ignore ALL secret files
+# This is the MOST IMPORTANT line.
+# It protects your API key and secret key.
+.env
+
+# 3. Ignore your database
+# This contains all your users' private data and history.
+app.db
+
+# 4. Ignore user-uploaded images
+# These are private medical images and should not be on GitHub.
+static/uploads/
+
+# 5. Ignore Python cache files
+__pycache__/
+*.pyc

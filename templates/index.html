@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AI Skin Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-dna"></i> SSSR-AI
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/app" class="active"><i class="fa-solid fa-microscope"></i>&nbsp; Analyze</a></li>
+                <li><a href="/history"><i class="fa-solid fa-clock-rotate-left"></i>&nbsp; History</a></li>
+            </ul>
+            <div class="user-profile">
+                <div class="user-info">
+                    User: <strong>{{ name }}</strong>
+                </div>
+                <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <div class="content-card">
+                <h2><i class="fa-solid fa-upload"></i>&nbsp; Upload Scan</h2>
+                <p style="color: var(--text-muted);">Select a clear image of the skin lesion for AI processing.</p>
+                
+                <form id="analyze-form">
+                    <input type="file" id="file-upload" name="file" accept="image/*" required>
+                    <button type="submit" style="margin-top: 15px;">
+                        <i class="fa-solid fa-bolt"></i> Run Analysis
+                    </button>
+                </form>
+            </div>
+            
+            <div class="content-card">
+                <h2><i class="fa-solid fa-square-poll-vertical"></i>&nbsp; Results</h2>
+                <img id="image-preview" src="" alt="Preview" />
+                <div id="analysis-result" class="result-box">
+                    <p>Waiting for input stream...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+/* static/style.css */
+
+/* --- 1. Global Variables (The Radium Theme) --- */
+:root {
+    /* Dark Backgrounds */
+    --bg-body: #050505;       /* Almost black */
+    --bg-sidebar: #0f0f0f;    /* Slightly lighter black */
+    --bg-card: #141414;       /* Dark gray for cards */
+    
+    /* Neon/Radium Accents */
+    --primary: #00ff88;       /* Radium Green */
+    --primary-dim: #00cc6a;
+    --primary-glow: 0 0 15px rgba(0, 255, 136, 0.4); /* The Glow Effect */
+    
+    /* Text Colors */
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    
+    /* Borders */
+    --border: #333333;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-main);
+    margin-top: 0;
+    letter-spacing: 0.5px;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a:hover {
+    text-shadow: var(--primary-glow);
+    color: #fff;
+}
+
+/* --- Buttons with Glow --- */
+button {
+    padding: 12px 20px;
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 0 0 var(--primary);
+}
+
+button:hover {
+    background-color: var(--primary);
+    color: #000;
+    box-shadow: var(--primary-glow);
+}
+
+.delete-btn {
+    color: #ff4444;
+    border-color: #ff4444;
+}
+.delete-btn:hover {
+    background-color: #ff4444;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.4);
+}
+
+/* --- 2. Layout --- */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* --- 3. Sidebar --- */
+.sidebar-header {
+    font-size: 1.8em;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-shadow: var(--primary-glow);
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+}
+.nav-menu li {
+    margin-bottom: 15px;
+}
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+}
+.nav-menu a:hover, .nav-menu a.active {
+    background-color: rgba(0, 255, 136, 0.1);
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: var(--primary-glow);
+}
+
+.user-profile {
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+.user-profile strong {
+    color: var(--primary);
+}
+
+/* --- 4. Cards & Inputs --- */
+.content-card {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+/* A subtle top glowing line for cards */
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+input[type="file"] {
+    border: 2px dashed var(--border);
+    background-color: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+input[type="file"]:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: var(--primary-glow);
+}
+
+.result-box {
+    background-color: #000;
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: 'Courier New', monospace; /* Computer terminal look */
+    color: var(--primary);
+    line-height: 1.6;
+}
+
+#image-preview {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--border);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    display: none;
+}
+
+/* --- 5. History Grid --- */
+#history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.history-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+.history-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--primary-glow);
+}
+.history-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+}
+.history-card-content {
+    padding: 15px;
+}
+
+/* --- 6. Auth Pages --- */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    box-shadow: var(--primary-glow);
+}
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 5px; color: var(--primary); font-size: 0.9em; text-transform: uppercase;}
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: #000;
+    border: 1px solid var(--border);
+    color: #fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: var(--primary-glow);
+}
